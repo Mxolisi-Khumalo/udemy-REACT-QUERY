@@ -14,7 +14,7 @@ export const MUTATION_KEY = "patch-user";
 // for when we need a server function
 async function patchUserOnServer(
   newData: User | null,
-  originalData: User | null
+  originalData: User | null,
 ): Promise<User | null> {
   if (!newData || !originalData) return null;
   // create a patch for the difference between newData and originalData
@@ -26,7 +26,7 @@ async function patchUserOnServer(
     { patch },
     {
       headers: getJWTHeader(originalData.token),
-    }
+    },
   );
   return data.user;
 }

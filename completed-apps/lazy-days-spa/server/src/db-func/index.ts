@@ -73,7 +73,6 @@ const { applyPatch } = jsonPatch;
 async function updateItem<DataType extends JsonDataType>(
   itemId: number,
   filename: filenames,
-  // should be fast-json-patch Operation, but I can't destructure on import
   itemPatch: Operation[],
 ): Promise<DataType> {
   try {
