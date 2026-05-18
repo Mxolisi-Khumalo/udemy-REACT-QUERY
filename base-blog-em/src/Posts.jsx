@@ -9,14 +9,24 @@ export function Posts() {
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedPost, setSelectedPost] = useState(null);
 
-  // replace with useQuery, destructuring the data property that is returned from the query function we pass to useQuery
-  const {data} = useQuery({  // Takes an object of objetcs
+  // destructuring the data property that is returned from the query function we pass to useQuery
+  const {data, isError, error, isLoading} = useQuery({  // Takes an object of objetcs
     queryKey: ["posts"],    // Defines the data inside the query cache, always an array. Only defines the data after query function has returned, till then data is undefined
     queryFn: fetchPosts,    // The function that's going to run to fetch the data
+    staleTime: 2000,        // specifying the stale time for the data ["posts"] that is fected, 2000ms => 2 seconds
   });
 
-  if (!data) {
-    return <div />
+  if (isLoading){
+    return <h3>Loading...</h3>
+  }
+
+  if (isError){
+    return (
+      <> 
+        <h3>Oops, something went wrong</h3>
+        <p>{error.toString()}</p>
+      </>
+    );
   }
 
   return (
