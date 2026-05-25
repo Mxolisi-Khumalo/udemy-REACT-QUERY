@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 export function PostDetail({ post }) {
   // replace with useQuery
   const {data, isLoading, isError, error} = useQuery({
-    queryKey: ["Comments"],
+    queryKey: ["comments", post.id],
     queryFn: () => fetchComments(post.id),
   });
 
