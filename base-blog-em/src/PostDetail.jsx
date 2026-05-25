@@ -22,6 +22,7 @@ export function PostDetail({ post, deleteMutation, updateMutation }) {  // add t
     );
   }
 
+  
   return (
     <>
       <h3 style={{ color: "blue" }}>{post.title}</h3>
