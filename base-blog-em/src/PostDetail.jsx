@@ -4,7 +4,6 @@ import "./PostDetail.css";
 import { useQuery } from "@tanstack/react-query";
 
 export function PostDetail({ post, deleteMutation, updateMutation }) {  // add the delete mutation as a prop
-  // replace with useQuery
   const {data, isLoading, isError, error} = useQuery({
     queryKey: ["comments", post.id],
     queryFn: () => fetchComments(post.id),
